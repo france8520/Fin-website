@@ -1594,6 +1594,70 @@ h6 {
 }
 
 /* ============================================
+   CONTACT & LOCATION SECTION
+   ============================================ */
+.contact-section {
+    padding: 6rem 0;
+    background: var(--bg-body);
+    position: relative;
+}
+
+.contact-form-glass {
+    background: var(--bg-glass-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    height: 100%;
+    box-shadow: var(--shadow-lg);
+}
+
+.map-container {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border);
+    position: relative;
+    height: 400px;
+    background: var(--bg-surface);
+}
+
+.map-container iframe {
+    filter: grayscale(1) invert(0.1);
+    transition: filter var(--duration-slow) var(--ease-out);
+    opacity: 0.8;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0) invert(0);
+    opacity: 1;
+}
+
+[data-bs-theme="dark"] .map-container iframe {
+    filter: grayscale(1) invert(0.9) hue-rotate(180deg);
+}
+
+[data-bs-theme="dark"] .map-container:hover iframe {
+    filter: grayscale(0.5) invert(0.9) hue-rotate(180deg);
+}
+
+.map-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.map-overlay .badge {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    backdrop-filter: blur(4px);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer-section {
