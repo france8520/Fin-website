@@ -159,6 +159,40 @@ body:hover .cursor-spotlight {
     opacity: 1;
 }
 
+/* Custom Cursor Ring */
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    mix-blend-mode: exclusion;
+}
+
+.cursor-ring.active {
+    width: 60px;
+    height: 60px;
+    background: hsla(210, 100%, 60%, 0.1);
+    border-color: hsla(210, 100%, 75%, 0.5);
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 992px) {
+
+    body,
+    a,
+    button,
+    .clickable {
+        cursor: none !important;
+    }
+}
+
 h1,
 h2,
 h3,
@@ -317,6 +351,38 @@ h6 {
     height: 32px;
 }
 
+.nav-icon-cool {
+    font-size: 1.5rem;
+    color: var(--primary);
+    filter: drop-shadow(0 0 8px hsla(210, 100%, 60%, 0.5));
+    animation: iconBreath 3s infinite ease-in-out;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-bs-theme="dark"] .nav-icon-cool {
+    color: hsl(210, 100%, 75%);
+    filter: drop-shadow(0 0 12px hsla(210, 100%, 75%, 0.6));
+}
+
+@keyframes iconBreath {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px hsla(210, 100%, 60%, 0.5));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px hsla(210, 100%, 70%, 0.8));
+        transform: scale(1.1);
+    }
+}
+
+.navbar-brand:hover .nav-icon-cool {
+    transform: rotate(-15deg) scale(1.2);
+    color: #fff;
+}
+
 .nav-logo {
     width: 100%;
     height: auto;
@@ -349,7 +415,7 @@ h6 {
 
 .navbar-brand:hover {
     color: var(--primary) !important;
-    text-shadow: 0 0 15px hsla(210, 100%, 60%, 0.2);
+    text-shadow: 0 0 15px hsla(210, 100%, 60%, 0.3);
 }
 
 .nav-link {

@@ -18,6 +18,7 @@
 
 <body>
     <div class="cursor-spotlight" id="cursor-spotlight"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
     <!-- ============================================
          NAVBAR
          ============================================ -->
@@ -25,7 +26,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <div class="logo-wrapper">
-                    <img src="Fin.png" alt="FinAlpha Logo" class="nav-logo">
+                    <i class="bi bi-lightning-charge-fill nav-icon-cool"></i>
                 </div>
                 <span>FinAlpha</span>
             </a>
@@ -989,31 +990,47 @@
         }
 
         // ============================================
-        // MOUSE SPOTLIGHT ANIMATION
+        // MOUSE CURSOR & SPOTLIGHT ANIMATION
         // ============================================
         const spotlight = document.getElementById('cursor-spotlight');
+        const ring = document.getElementById('cursor-ring');
+
         let mouseX = 0;
         let mouseY = 0;
         let spotlightX = 0;
         let spotlightY = 0;
+        let ringX = 0;
+        let ringY = 0;
 
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
 
-        function animateSpotlight() {
-            // Smooth lerp for the spotlight
-            const speed = 0.15;
-            spotlightX += (mouseX - spotlightX) * speed;
-            spotlightY += (mouseY - spotlightY) * speed;
-
+        function animateCursor() {
+            // Spotlight lerp (faster)
+            const spotlightSpeed = 0.2;
+            spotlightX += (mouseX - spotlightX) * spotlightSpeed;
+            spotlightY += (mouseY - spotlightY) * spotlightSpeed;
             spotlight.style.left = `${spotlightX}px`;
             spotlight.style.top = `${spotlightY}px`;
 
-            requestAnimationFrame(animateSpotlight);
+            // Ring lerp (slower trailing effect)
+            const ringSpeed = 0.1;
+            ringX += (mouseX - ringX) * ringSpeed;
+            ringY += (mouseY - ringY) * ringSpeed;
+            ring.style.left = `${ringX}px`;
+            ring.style.top = `${ringY}px`;
+
+            requestAnimationFrame(animateCursor);
         }
-        animateSpotlight();
+        animateCursor();
+
+        // Hover effects for the ring
+        document.querySelectorAll('a, button, .clickable, .feature-card, .pricing-card').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('active'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('active'));
+        });
     </script>
 </body>
 
