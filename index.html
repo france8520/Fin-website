@@ -23,7 +23,7 @@
          NAVBAR
          ============================================ -->
     <nav class="navbar navbar-expand-lg fixed-top" id="main-nav">
-        <div class="container">
+        <div class="container-fluid px-4">
             <a class="navbar-brand" href="#">
                 <div class="logo-wrapper">
                     <i class="bi bi-infinity nav-icon-cool"></i>
@@ -1042,6 +1042,16 @@
                 ring.style.boxShadow = '';
                 ring.style.backdropFilter = '';
             });
+        });
+
+        document.addEventListener('mousedown', () => {
+            ring.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            ring.style.borderColor = 'var(--primary)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            ring.style.transform = 'translate(-50%, -50%) scale(1)';
+            ring.style.borderColor = '';
         });
     </script>
 </body>

@@ -816,8 +816,8 @@ h6 {
 .step-card,
 .pricing-card,
 .testimonial-card,
-.demo-widget,
-.faq-item {
+.testimonial-card,
+.demo-widget {
     background: var(--glass-bg);
     backdrop-filter: blur(var(--blur-md));
     -webkit-backdrop-filter: blur(var(--blur-md));
@@ -1441,6 +1441,9 @@ h6 {
     margin-bottom: 0.75rem;
     overflow: hidden;
     transition: border-color var(--duration-fast) ease;
+    height: auto;
+    position: relative;
+    padding: 0;
 }
 
 .faq-item:hover {
