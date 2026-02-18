@@ -26,7 +26,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <div class="logo-wrapper">
-                    <i class="bi bi-lightning-charge-fill nav-icon-cool"></i>
+                    <i class="bi bi-infinity nav-icon-cool"></i>
                 </div>
                 <span>FinAlpha</span>
             </a>
@@ -1009,14 +1009,14 @@
 
         function animateCursor() {
             // Spotlight lerp (faster)
-            const spotlightSpeed = 0.2;
+            const spotlightSpeed = 0.35;
             spotlightX += (mouseX - spotlightX) * spotlightSpeed;
             spotlightY += (mouseY - spotlightY) * spotlightSpeed;
             spotlight.style.left = `${spotlightX}px`;
             spotlight.style.top = `${spotlightY}px`;
 
-            // Ring lerp (slower trailing effect)
-            const ringSpeed = 0.1;
+            // Ring lerp (snappier trailing effect)
+            const ringSpeed = 0.25;
             ringX += (mouseX - ringX) * ringSpeed;
             ringY += (mouseY - ringY) * ringSpeed;
             ring.style.left = `${ringX}px`;
@@ -1028,8 +1028,20 @@
 
         // Hover effects for the ring
         document.querySelectorAll('a, button, .clickable, .feature-card, .pricing-card').forEach(el => {
-            el.addEventListener('mouseenter', () => ring.classList.add('active'));
-            el.addEventListener('mouseleave', () => ring.classList.remove('active'));
+            el.addEventListener('mouseenter', () => {
+                ring.classList.add('active');
+                ring.style.borderColor = 'transparent';
+                ring.style.background = 'hsla(210, 100%, 75%, 0.15)';
+                ring.style.boxShadow = '0 0 20px hsla(210, 100%, 75%, 0.3)';
+                ring.style.backdropFilter = 'blur(2px)';
+            });
+            el.addEventListener('mouseleave', () => {
+                ring.classList.remove('active');
+                ring.style.borderColor = '';
+                ring.style.background = '';
+                ring.style.boxShadow = '';
+                ring.style.backdropFilter = '';
+            });
         });
     </script>
 </body>
