@@ -298,17 +298,58 @@ h6 {
 }
 
 .navbar-brand {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1.45rem;
-    color: var(--primary) !important;
+    font-size: 1.5rem;
+    color: var(--text-primary) !important;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.75rem;
+    transition: var(--transition-base);
 }
 
-.navbar-brand i {
-    font-size: 1.1rem;
+.logo-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.nav-logo {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 5px hsla(210, 100%, 60%, 0.3));
+    animation: logoBreath 3s infinite ease-in-out;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-bs-theme="dark"] .nav-logo {
+    filter: invert(1) brightness(1.2) drop-shadow(0 0 8px hsla(210, 100%, 70%, 0.4));
+}
+
+@keyframes logoBreath {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 5px hsla(210, 100%, 60%, 0.3));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 12px hsla(210, 100%, 70%, 0.6));
+        transform: scale(1.05);
+    }
+}
+
+.navbar-brand:hover .nav-logo {
+    transform: rotate(10deg) scale(1.15);
+}
+
+.navbar-brand:hover {
+    color: var(--primary) !important;
+    text-shadow: 0 0 15px hsla(210, 100%, 60%, 0.2);
 }
 
 .nav-link {
